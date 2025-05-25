@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "NextInAndroidLab"
 include(":app")
- 
+include(":masterrecyclerview")
+include(":Networking")
+include(":RoomOrLocalDataStore")
+include(":NavigationComponent")
