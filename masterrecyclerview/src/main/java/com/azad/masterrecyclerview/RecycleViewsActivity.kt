@@ -29,6 +29,7 @@ class RecycleViewsActivity : AppCompatActivity(), ActionPerformer {
         }
     }
     fun startFragment(){
+        performActionFromNetwork()
         // Create an instance of the fragment you want to display
         val userListFragment = SimpleUserListFragment()
 

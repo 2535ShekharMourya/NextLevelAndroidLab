@@ -8,10 +8,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.azad.networking.interfaces.ActionPerformer
 
 class NetworkingActivity : AppCompatActivity() {
+    private lateinit var actionPerformer: ActionPerformer
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_networking)
+        actionPerformer = this as ActionPerformer
 
 
 
@@ -21,7 +24,10 @@ class NetworkingActivity : AppCompatActivity() {
             insets
         }
     }
-
+    fun callAnotherModuleMethods(){
+        // Perform the action from the network
+        actionPerformer.performActionFromNetwork()
+    }
 
 
 }
