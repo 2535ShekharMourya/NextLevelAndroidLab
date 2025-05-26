@@ -52,6 +52,7 @@ dependencies {
     implementation( project(":Networking"))
     implementation( project(":RoomOrLocalDataStore"))
     implementation( project(":NavigationComponent"))
+    implementation( project(":AiMlInAndroid"))
 
 
 }
