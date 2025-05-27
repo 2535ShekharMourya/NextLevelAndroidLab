@@ -12,7 +12,9 @@ import androidx.annotation.RequiresPermission
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.azad.masterrecyclerview.recyclerviewfragments.PostsFragment
 import com.azad.masterrecyclerview.recyclerviewfragments.SimpleUserListFragment
+import com.azad.masterrecyclerview.recyclerviewfragments.UserFragment
 import com.azad.networking.interfaces.ActionPerformer
 
 class RecycleViewsActivity : AppCompatActivity(), ActionPerformer {
@@ -20,7 +22,7 @@ class RecycleViewsActivity : AppCompatActivity(), ActionPerformer {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_recycle_views)
-        startFragment()
+      startPostsFragment()
         Toast.makeText( this@RecycleViewsActivity, "RecycleViewsActivity", Toast.LENGTH_SHORT).show()
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -28,8 +30,8 @@ class RecycleViewsActivity : AppCompatActivity(), ActionPerformer {
             insets
         }
     }
-    fun startFragment(){
-        performActionFromNetwork()
+    fun startUserListFragment(){
+     //   performActionFromNetwork()
         // Create an instance of the fragment you want to display
         val userListFragment = SimpleUserListFragment()
 
@@ -39,6 +41,42 @@ class RecycleViewsActivity : AppCompatActivity(), ActionPerformer {
             // The first argument is the ID of the container in your layout
             // The second argument is the fragment instance
             .replace(R.id.fragment_container, userListFragment)
+            // (Optional) Add the transaction to the back stack.
+            // This allows the user to navigate back to the previous state (e.g., an empty container)
+            // by pressing the back button.
+            .addToBackStack(null) // 'null' means no specific name for this transaction
+            // Commit the transaction to apply the changes
+            .commit()
+    }
+    fun startUserFragment(){
+        //   performActionFromNetwork()
+        // Create an instance of the fragment you want to display
+        val userFragment = UserFragment()
+
+        // Get the FragmentManager and start a transaction
+        supportFragmentManager.beginTransaction()
+            // Replace any existing fragment in the 'fragment_container' with your new fragment
+            // The first argument is the ID of the container in your layout
+            // The second argument is the fragment instance
+            .replace(R.id.fragment_container, userFragment)
+            // (Optional) Add the transaction to the back stack.
+            // This allows the user to navigate back to the previous state (e.g., an empty container)
+            // by pressing the back button.
+            .addToBackStack(null) // 'null' means no specific name for this transaction
+            // Commit the transaction to apply the changes
+            .commit()
+    }
+    fun startPostsFragment(){
+        //   performActionFromNetwork()
+        // Create an instance of the fragment you want to display
+        val postsFragment = PostsFragment()
+
+        // Get the FragmentManager and start a transaction
+        supportFragmentManager.beginTransaction()
+            // Replace any existing fragment in the 'fragment_container' with your new fragment
+            // The first argument is the ID of the container in your layout
+            // The second argument is the fragment instance
+            .replace(R.id.fragment_container, postsFragment)
             // (Optional) Add the transaction to the back stack.
             // This allows the user to navigate back to the previous state (e.g., an empty container)
             // by pressing the back button.
